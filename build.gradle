@@ -4,7 +4,6 @@ plugins {
     id 'neverlang' version '0.7'
     id 'nlgcheck' version '0.1'
     id 'aidme' version '0.1'
-    id 'application'
 }
 
 wrapper {
