@@ -1,0 +1,57 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'neverlang' version '0.7'
+    id 'nlgcheck' version '0.1'
+    id 'aidme' version '0.1'
+    id 'application'
+}
+
+wrapper {
+    gradleVersion = '8.0.1'
+}
+
+def baseUrl = "https://maven.adapt-lab.di.unimi.it"
+def releasesRepoUrl = "${baseUrl}/neverlang/releases"
+def snapshotsRepoUrl = "${baseUrl}/neverlang/snapshots"
+
+def neverlangVersion = "2.5.4"
+neverlang {
+    version = neverlangVersion
+}
+
+nlgcheck {
+    nlgcheckVersion = '0.1.0-SNAPSHOT'
+    languages = ['example.ExampleLanguage']
+}
+
+def lplVersion = "2.1.0-SNAPSHOT"
+aidme {
+    aidMeVersion = "${lplVersion}"
+    workbench = "it.unimi.di.adaptlab:aide-metrics-neverlang:${lplVersion}"
+    sourceDir = 'src/main/neverlang'
+    metrics = ['lcoa1', 'lcoa2', 'lcoa3', 'Coh', 'lcoa5', 'CognitiveComplexity', "MI"]
+}
+
+repositories {
+    maven {
+        url releasesRepoUrl
+    }
+    maven {
+        url snapshotsRepoUrl
+    }
+    maven {
+        url "${baseUrl}/aide/snapshots"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "it.unimi.di.adaptlab:neverlang-core:${neverlangVersion}"
+    implementation "it.unimi.di.adaptlab:neverlang-dexter:${neverlangVersion}"
+}
+
+task runHelloWorld(type: neverlang.execClass){
+    classpath = sourceSets.main.runtimeClasspath
+    languageMainClass = "example.ExampleLanguage"
+}
