@@ -1,6 +1,10 @@
 module example.ExampleModule {
     reference syntax {
-        Program <-- "Hello" "world" "!";
+        Program <-- Hello World "!";
+        Hello <-- "Hello";
+        Hello <-- "hello";
+        World <-- "World";
+        World <-- "world";
     }
     role(hello) {
         0 .{

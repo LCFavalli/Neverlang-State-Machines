@@ -45,9 +45,17 @@ repositories {
     mavenCentral()
 }
 
+def junitVersion = "5.9.0"
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation "it.unimi.di.adaptlab:neverlang-core:${neverlangVersion}"
     implementation "it.unimi.di.adaptlab:neverlang-dexter:${neverlangVersion}"
+    testImplementation "it.unimi.di.adaptlab:neverlang-junit-extension:${neverlangVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
 task runHelloWorld(type: neverlang.execClass){
