@@ -1,0 +1,10 @@
+state machine Door {
+    state Open {
+        on close => Closed;
+        on exit => Exit;
+    }
+    initial state Closed {
+        on open => Open;
+    }
+    final state Exit {}
+}

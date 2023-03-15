@@ -21,7 +21,7 @@ neverlang {
 
 nlgcheck {
     nlgcheckVersion = '0.1.0-SNAPSHOT'
-    languages = ['example.ExampleLanguage']
+    languages = ['sm.StateMachinesLang' ]
 }
 
 def lplVersion = "2.1.0-SNAPSHOT"
@@ -58,7 +58,7 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
-task runHelloWorld(type: neverlang.execClass){
+task runSM(type: neverlang.execClass){
     classpath = sourceSets.main.runtimeClasspath
-    languageMainClass = "example.ExampleLanguage"
+    languageMainClass = "sm.StateMachinesLang"
 }

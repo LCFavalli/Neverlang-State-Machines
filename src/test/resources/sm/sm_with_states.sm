@@ -1,0 +1,5 @@
+state machine Door {
+    state Open {}
+    initial state Closed {}
+    final state Exit {}
+}
