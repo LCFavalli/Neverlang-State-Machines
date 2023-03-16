@@ -4,6 +4,7 @@ plugins {
     id 'neverlang' version '0.8-SNAPSHOT'
     id 'nlgcheck' version '0.1'
     id 'aidme' version '0.1'
+    id 'application'
 }
 
 wrapper {
@@ -88,4 +89,9 @@ dependencies {
 task runSM(type: neverlang.execClass){
     classpath = sourceSets.main.runtimeClasspath
     languageMainClass = "sm.StateMachinesLang"
+}
+
+
+application {
+    mainClassName = "lsp.SocketLauncher"
 }

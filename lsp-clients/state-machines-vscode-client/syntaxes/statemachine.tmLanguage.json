@@ -1,0 +1,20 @@
+{
+  "fileTypes": ["sm"],
+  "name": "StateMachine",
+  "patterns": [
+    {
+      "match": "\\b(state|machine)\\b",
+      "name": "storage.type"
+    },
+    {
+      "match": "\\b(on|=>)\\b",
+      "name": "keyword.operator"
+    },
+    {
+      "match": "\\b(initial|final)\\b",
+      "name": "storage.modifier"
+    }
+  ],
+  "scopeName": "source.statemachine",
+  "uuid": "4e5fede3-9647-47d6-b771-22f6f59c1db7"
+}
