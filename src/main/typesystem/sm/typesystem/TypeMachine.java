@@ -1,6 +1,7 @@
 package sm.typesystem;
 
 
+import neverlang.typesystem.SymbolTableEntry;
 import neverlang.typesystem.symbols.Location;
 import org.eclipse.lsp4j.SemanticTokenTypes;
 import typelang.annotations.SemanticToken;
@@ -24,17 +25,14 @@ public class TypeMachine extends TypeScope {
     }
 
     @Override
-    public void validateScope() {
-        var ref = new AtomicReference<Location>();
+    public void validate(SymbolTableEntry entry) {
         var count = streamAllEntries()
                 .filter(e -> e.getValue().details() instanceof ModifierDetails)
-                .limit(2)
                 .map(Map.Entry::getValue)
                 .filter(e -> ((ModifierDetails)e.details()).modifier() == StateModifier.INITIAL)
-                .peek(e -> ref.set(e.location()))
                 .count();
-        if(count > 1) {
-            throw new ModifierException("Machine must have exactly one initial state", ref.get());
+        if(count != 1) {
+            throw new ModifierException("Machine must have exactly one initial state", entry.location());
         }
     }
 }

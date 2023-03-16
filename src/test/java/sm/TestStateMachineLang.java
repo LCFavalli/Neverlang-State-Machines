@@ -47,6 +47,27 @@ public class TestStateMachineLang {
         Utils.dotExporter(compilationHelper.getGraph(), writer);
     }
 
+    @Test
+    void testWithSemanticError(@NeverlangUnitParam(source = """
+            state machine Door {
+                state Open {
+                    on close => Closed;
+                    on exit => Tano;
+                }
+                initial state Closed {
+                    on open => Open;
+                }
+                initial state Tano {
+                    on open => Open;
+                }
+                final state Exit {}
+            }
+            """) ASTNode node) {
+        var recordSubscriber = new RecordSubscriber(o -> o instanceof LogRecord logRecord && logRecord.getLevel().equals(Level.SEVERE));
+        evalASTNode(node, recordSubscriber);
+        assertEquals(1, recordSubscriber.getList().size());
+    }
+
 
 
 }

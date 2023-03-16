@@ -1,12 +1,9 @@
 state machine Door {
     state Open {
         on close => Closed;
-        on exit => Exit;
+        on exit => Closed;
     }
     initial state Closed {
-        on open => Open;
-    }
-    initial state Tano {
         on open => Open;
     }
     final state Exit {}

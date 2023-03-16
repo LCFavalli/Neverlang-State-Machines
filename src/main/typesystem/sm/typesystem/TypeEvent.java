@@ -12,7 +12,7 @@ import typelang.annotations.TypeSystemKind;
         language = StateMachineModule.LANGUAGE,
         kind = TypeSystemKind.TYPE
 )
-@SemanticToken(SemanticTokenTypes.Event)
+@SemanticToken(SemanticTokenTypes.Property)
 public class TypeEvent implements Type {
     @Override
     public String id() {

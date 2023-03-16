@@ -9,6 +9,10 @@ module sm.EventDeclaration {
 
         0 <typeLang> .{
             catch {
+                eval $1
+                infer event $1
+            }
+            catch {
                 eval $2
                 infer state $2
             }

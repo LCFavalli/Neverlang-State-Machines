@@ -13,4 +13,11 @@ public class CompilationHelper extends neverlang.typesystem.CompilationHelper<St
     protected Scope<String> generateRootType() {
         return new TypeSourceSet();
     }
+
+    @Override
+    public void beforeAll() {
+        BaseLang.events().forEach(e -> {
+            e.withCompilationHelper(this).inScope(getRoot()).bind();
+        });
+    }
 }
