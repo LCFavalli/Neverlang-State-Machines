@@ -1,7 +1,7 @@
 plugins {
     id 'idea'
     id 'java'
-    id 'neverlang' version '0.7'
+    id 'neverlang' version '0.8-SNAPSHOT'
     id 'nlgcheck' version '0.1'
     id 'aidme' version '0.1'
 }
@@ -14,10 +14,27 @@ def baseUrl = "https://maven.adapt-lab.di.unimi.it"
 def releasesRepoUrl = "${baseUrl}/neverlang/releases"
 def snapshotsRepoUrl = "${baseUrl}/neverlang/snapshots"
 
-def neverlangVersion = "2.5.4"
-neverlang {
-    version = neverlangVersion
+def neverlangVersion = "2.5.5-SNAPSHOT"
+
+sourceSets {
+    typesystem {
+        java {
+            srcDirs = ['src/main/typesystem']
+        }
+    }
 }
+
+neverlang {
+    compiler {
+        version = neverlangVersion
+        neverlangModule = "sm.TypeLangModule"
+        abstractModules = ["sm.typesystem.StateMachineModule"]
+        dependsOnRuntime sourceSets.named("typesystem").get()
+    }
+}
+
+
+
 
 nlgcheck {
     nlgcheckVersion = '0.1.0-SNAPSHOT'
@@ -42,6 +59,7 @@ repositories {
     maven {
         url "${baseUrl}/aide/snapshots"
     }
+    mavenLocal()
     mavenCentral()
 }
 
@@ -51,11 +69,20 @@ test {
 }
 
 dependencies {
+
+    testImplementation 'org.jgrapht:jgrapht-io:1.5.1'
+    implementation sourceSets.named("typesystem").get().output
     implementation "it.unimi.di.adaptlab:neverlang-core:${neverlangVersion}"
     implementation "it.unimi.di.adaptlab:neverlang-dexter:${neverlangVersion}"
     testImplementation "it.unimi.di.adaptlab:neverlang-junit-extension:${neverlangVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    implementation "it.unimi.di.adaptlab:neverlang-lsp-core:1.0-SNAPSHOT"
+    implementation "it.unimi.di.adaptlab:neverlang-typesystem:1.0-SNAPSHOT"
+    typesystemImplementation "it.unimi.di.adaptlab:neverlang-lsp-core:1.0-SNAPSHOT"
+    typesystemImplementation "it.unimi.di.adaptlab:neverlang-typesystem:1.0-SNAPSHOT"
+    typesystemImplementation "it.unimi.di.adaptlab:neverlang-core:${neverlangVersion}"
+    typesystemImplementation "it.unimi.di.adaptlab:neverlang-dexter:${neverlangVersion}"
 }
 
 task runSM(type: neverlang.execClass){

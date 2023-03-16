@@ -3,6 +3,18 @@ module sm.EventDeclaration {
         event:
             EventDefinition <-- "on" SMIdentifier "=>" SMIdentifier ";";
     }
+
+
+    role(type-checker) {
+
+        0 <typeLang> .{
+            catch {
+                eval $2
+                infer state $2
+            }
+        }.
+    }
+
     role(register) {
         event: @{
             String eventId = $event[1].id;

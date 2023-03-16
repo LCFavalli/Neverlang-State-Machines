@@ -6,5 +6,8 @@ state machine Door {
     initial state Closed {
         on open => Open;
     }
+    initial state Tano {
+        on open => Open;
+    }
     final state Exit {}
 }

@@ -1,4 +1,4 @@
-language sm.StateMachinesLang {
+language sm.StateMachinesLSPLang {
     slices
         sm.StateMachineDeclaration
         sm.SMIdentifierAlias
@@ -7,8 +7,8 @@ language sm.StateMachinesLang {
         sm.EventList
         sm.EventDeclaration
     endemic slices
-        sm.StateCache
-    roles syntax <+ type-checker < ids <+ evaluation <+ register
+        sm.LSPEndemicSlice
+    roles syntax <+ type-checker
     rename {
         StateMachineDeclaration --> Program;
     }
