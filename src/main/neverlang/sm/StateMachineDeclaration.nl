@@ -10,9 +10,9 @@ module sm.StateMachineDeclaration {
             define scope file ($file ?? global)
             enter scope
             eval $1
-            define scope machine $1 from 2 to 3 {
+            define scope machine $1 from #2 to #3 [
                 run $2 priority machine
-            }
+            ]
             exit scope
         }.
     }

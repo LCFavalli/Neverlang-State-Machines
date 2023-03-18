@@ -16,8 +16,6 @@ public class CompilationHelper extends neverlang.typesystem.CompilationHelper<St
 
     @Override
     public void beforeAll() {
-        BaseLang.events().forEach(e -> {
-            e.withCompilationHelper(this).inScope(getRoot()).bind();
-        });
+        BaseLang.events().forEach(e -> e.withCompilationHelper(this).inScope(getRoot()).bind());
     }
 }

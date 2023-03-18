@@ -9,9 +9,6 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onLanguage:statemachine"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "languages": [
@@ -32,6 +29,34 @@
         "language": "statemachine",
         "scopeName": "source.statemachine",
         "path": "./syntaxes/statemachine.tmLanguage.json"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "statemachine",
+        "scopes": {
+          "property.initial": [
+            "variable.other.property.initial.sm"
+          ]
+        }
+      },
+      {
+        "language": "statemachine",
+        "scopes": {
+          "property.final": [
+            "variable.other.property.final.sm"
+          ]
+        }
+      }
+    ],
+    "semanticTokenModifiers": [
+      {
+        "id": "final",
+        "description": "final state"
+      },
+      {
+        "id": "initial",
+        "description": "Initial state"
       }
     ]
   },

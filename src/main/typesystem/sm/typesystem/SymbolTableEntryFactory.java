@@ -8,6 +8,7 @@ import neverlang.typesystem.defaults.DefaultSymbolTableEntry;
 import neverlang.typesystem.symbols.Token;
 import neverlang.typesystem.typenv.EntryType;
 import org.checkerframework.checker.nullness.Opt;
+import typelang.annotations.TypeDetail;
 import typelang.annotations.TypeLangAnnotation;
 import typelang.annotations.TypeSystemKind;
 
@@ -26,20 +27,10 @@ public class SymbolTableEntryFactory extends neverlang.typesystem.SymbolTableEnt
     }
 
     @Override
-    public EntryType entryType() {
-        if (this.token() != null) {
-            return new CustomEntryType(this.token(), this.type());
-        } else if (this.getIdentifier() != null) {
-            return new CustomEntryType(Token.of(this.getIdentifier().toString()), this.type());
-        } else {
-            throw new RuntimeException("Cannot create entry type without token or identifier");
-        }
-    }
-
-    @Override
     public EntryDetails entryDetails() {
         return new ModifierDetails(modifier);
     }
+    @TypeDetail(id = "modifier")
 
     public SymbolTableEntryFactory withModifier(StateModifier modifier) {
         this.modifier = modifier;
@@ -51,7 +42,8 @@ public class SymbolTableEntryFactory extends neverlang.typesystem.SymbolTableEnt
         return new sm.typesystem.SymbolTableEntry(
                 entryType(),
                 entryDetails(),
-                foldingRange()
+                foldingRange(),
+                entryKind()
         );
     }
 }

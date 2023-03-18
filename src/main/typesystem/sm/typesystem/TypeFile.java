@@ -1,7 +1,5 @@
 package sm.typesystem;
 
-import org.eclipse.lsp4j.SemanticTokenTypes;
-import typelang.annotations.SemanticToken;
 import typelang.annotations.TypeLangAnnotation;
 import typelang.annotations.TypeSystemKind;
 

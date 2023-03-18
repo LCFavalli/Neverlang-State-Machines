@@ -4,6 +4,7 @@ import neverlang.typesystem.EntryDetails;
 import neverlang.typesystem.Type;
 import neverlang.typesystem.symbols.Range;
 import neverlang.typesystem.symbols.Token;
+import neverlang.typesystem.symboltable.EntryKind;
 import neverlang.typesystem.typenv.EntryType;
 import typelang.annotations.TypeLangAnnotation;
 import typelang.annotations.TypeSystemKind;
@@ -17,7 +18,8 @@ import java.util.concurrent.atomic.AtomicReference;
 public record SymbolTableEntry(
         EntryType entryType,
         EntryDetails details,
-        Range foldingRange
+        Range foldingRange,
+        EntryKind entryKind
 ) implements neverlang.typesystem.SymbolTableEntry {
 
 

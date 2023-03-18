@@ -1,8 +1,6 @@
 package sm.typesystem;
 
-import neverlang.typesystem.CompilationHelper;
 import neverlang.typesystem.symboltable.EntryKind;
-
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -18,7 +16,7 @@ public class BaseLang {
     public static Stream<SymbolTableEntryFactory> events() {
         return eventsMap.entrySet().stream().map(e ->
             new SymbolTableEntryFactory()
-                    .withEntryKind(EntryKind.DEFINITION)
+                    .withEntryKind(EntryKind.DEFINE)
                     .withIdentifier(e.getKey())
                     .withType(e.getValue())
         );

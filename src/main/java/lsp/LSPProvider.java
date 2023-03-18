@@ -11,13 +11,16 @@ import java.util.List;
 
 public class LSPProvider extends NeverlangLSPProvider {
 
+    final static String typesystem = "sm.typesystem";
+
     public LSPProvider() {
         super(List.of(
                 new DefaultDiagnostic(StateMachineModule.LANGUAGE),
-                new StateMachineDocumentSymbol(),
+                new DefaultDocumentSymbol(typesystem),
                 new DefaultGoToDefinition(),
                 new DefaultReferences(),
-                new DefaultFoldingRange()
+                new DefaultFoldingRange(),
+                new DefaultSemanticToken(typesystem)
         ));
     }
     @Override
