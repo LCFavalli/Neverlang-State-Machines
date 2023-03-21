@@ -8,11 +8,11 @@ module sm.EventDeclaration {
     role(type-checker) {
 
         0 <typeLang> .{
+
             try {
                 eval $1
                 infer event $1
-            }
-            try {
+
                 eval $2
                 infer state $2
             }

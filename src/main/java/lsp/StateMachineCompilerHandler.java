@@ -1,13 +1,12 @@
 package lsp;
 
-import neverlang.lsp.compiler.LSPCompilerHandler;
-import neverlang.typesystem.compiler.Compiler;
-import neverlang.typesystem.compiler.SourceSet;
-import neverlang.typesystem.defaults.DefaultSourceSet;
+import neverlang.core.lsp.compiler.LSPCompilerHandler;
+import neverlang.core.typesystem.compiler.Compiler;
+import neverlang.core.typesystem.compiler.SourceSet;
+import neverlang.core.typesystem.defaults.DefaultSourceSet;
 import sm.StateMachinesLSPLang;
-import sm.StateMachinesLang;
 import sm.typesystem.CompilationHelper;
-import sm.typesystem.StateMachineModule;
+import sm.StateMachineModule;
 
 import java.nio.file.Path;
 import java.util.List;

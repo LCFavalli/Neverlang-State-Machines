@@ -1,18 +1,19 @@
 package sm.typesystem;
 
-import neverlang.typesystem.Signature;
-import neverlang.typesystem.SymbolTableEntry;
-import neverlang.typesystem.Type;
+import neverlang.core.typelang.annotations.DocumentSymbol;
+import neverlang.core.typelang.annotations.SemanticToken;
+import neverlang.core.typelang.annotations.TypeLangAnnotation;
+import neverlang.core.typelang.annotations.TypeSystemKind;
+import neverlang.core.typesystem.Signature;
+import neverlang.core.typesystem.SymbolTableEntry;
+import neverlang.core.typesystem.Type;
 import org.eclipse.lsp4j.SemanticTokenTypes;
 import org.eclipse.lsp4j.SymbolKind;
-import typelang.annotations.DocumentSymbol;
-import typelang.annotations.SemanticToken;
-import typelang.annotations.TypeLangAnnotation;
-import typelang.annotations.TypeSystemKind;
+import sm.StateMachineModule;
 
 @TypeLangAnnotation(
-        id = "event",
-        language = StateMachineModule.LANGUAGE,
+        keyword = "event",
+        label = StateMachineModule.LABEL,
         kind = TypeSystemKind.TYPE
 )
 

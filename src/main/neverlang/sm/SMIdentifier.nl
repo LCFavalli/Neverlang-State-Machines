@@ -1,6 +1,7 @@
 module sm.SMIdentifier {
-  imports {
-        neverlang.typesystem.symbols.Token;
+
+    imports {
+        neverlang.core.typesystem.symbols.Token;
     }
 
     reference syntax {

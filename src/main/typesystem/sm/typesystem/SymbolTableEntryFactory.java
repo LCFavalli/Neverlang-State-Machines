@@ -1,24 +1,22 @@
 package sm.typesystem;
 
 
-import neverlang.typesystem.EntryDetails;
-import neverlang.typesystem.SymbolTableEntry;
-import neverlang.typesystem.defaults.DefaultEntryType;
-import neverlang.typesystem.defaults.DefaultSymbolTableEntry;
-import neverlang.typesystem.symbols.Token;
-import neverlang.typesystem.typenv.EntryType;
-import org.checkerframework.checker.nullness.Opt;
-import typelang.annotations.TypeDetail;
-import typelang.annotations.TypeLangAnnotation;
-import typelang.annotations.TypeSystemKind;
+import neverlang.core.typelang.annotations.TypeDetail;
+import neverlang.core.typelang.annotations.TypeLangAnnotation;
+import neverlang.core.typelang.annotations.TypeSystemKind;
+import neverlang.core.typesystem.EntryDetails;
+import neverlang.core.typesystem.SymbolTableEntry;
+import neverlang.core.typesystem.defaults.DefaultSymbolTableEntry;
+import neverlang.core.typesystem.symbols.Token;
+import sm.StateMachineModule;
 
 import java.util.Optional;
 
 @TypeLangAnnotation(
-        language = StateMachineModule.LANGUAGE,
+        label = StateMachineModule.LABEL,
         kind = TypeSystemKind.SYMBOL_TABLE_ENTRY_FACTORY
 )
-public class SymbolTableEntryFactory extends neverlang.typesystem.SymbolTableEntryFactory<String, SymbolTableEntryFactory> {
+public class SymbolTableEntryFactory extends neverlang.core.typesystem.SymbolTableEntryFactory<String, SymbolTableEntryFactory> {
     private StateModifier modifier = StateModifier.NORMAL;
 
     @Override
@@ -39,7 +37,7 @@ public class SymbolTableEntryFactory extends neverlang.typesystem.SymbolTableEnt
 
     @Override
     public SymbolTableEntry getSymbolTableEntry() {
-        return new sm.typesystem.SymbolTableEntry(
+        return new DefaultSymbolTableEntry(
                 entryType(),
                 entryDetails(),
                 foldingRange(),

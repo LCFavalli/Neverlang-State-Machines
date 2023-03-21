@@ -1,10 +1,12 @@
 package sm.typesystem;
 
-import typelang.annotations.TypeLangAnnotation;
-import typelang.annotations.TypeSystemKind;
+
+import neverlang.core.typelang.annotations.TypeLangAnnotation;
+import neverlang.core.typelang.annotations.TypeSystemKind;
+import sm.StateMachineModule;
 
 @TypeLangAnnotation(
-        language = StateMachineModule.LANGUAGE,
+        label = StateMachineModule.LABEL,
         kind = TypeSystemKind.PRIORITY
 )
 

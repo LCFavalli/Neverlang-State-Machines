@@ -1,6 +1,7 @@
 package sm.typesystem;
 
-import neverlang.typesystem.EntryDetails;
+
+import neverlang.core.typesystem.EntryDetails;
 
 public record ModifierDetails(StateModifier modifier) implements EntryDetails {
 }

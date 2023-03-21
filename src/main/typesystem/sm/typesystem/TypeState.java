@@ -1,19 +1,23 @@
 package sm.typesystem;
 
-import neverlang.typesystem.Signature;
-import neverlang.typesystem.SymbolTableEntry;
-import neverlang.typesystem.symboltable.EntryKind;
+import neverlang.core.typelang.annotations.*;
+import neverlang.core.typesystem.Signature;
+import neverlang.core.typesystem.SymbolTableEntry;
+import neverlang.core.typesystem.defaults.DefaultTypeScope;
+import neverlang.core.typesystem.defaults.SingleTypeTypeBinder;
+import neverlang.core.typesystem.symboltable.EntryKind;
+import neverlang.core.typesystem.typenv.EntryTypeBinder;
 import org.eclipse.lsp4j.SemanticTokenTypes;
 import org.eclipse.lsp4j.SymbolKind;
-import typelang.annotations.*;
+import sm.StateMachineModule;
 
 @TypeLangAnnotation(
-        id = "state",
-        language = StateMachineModule.LANGUAGE,
+        keyword = "state",
+        label = StateMachineModule.LABEL,
         kind = TypeSystemKind.TYPE
 )
 
-public class TypeState extends TypeScope {
+public class TypeState extends DefaultTypeScope {
     @Override
     public String id() {
         return "state";
@@ -49,5 +53,10 @@ public class TypeState extends TypeScope {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Class<? extends EntryTypeBinder> getTypeBinder() {
+        return SingleTypeTypeBinder.class;
     }
 }

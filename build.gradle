@@ -29,7 +29,7 @@ neverlang {
     compiler {
         version = neverlangVersion
         neverlangModule = "sm.TypeLangModule"
-        abstractModules = ["sm.typesystem.StateMachineModule"]
+        abstractModules = ["sm.StateMachineModule"]
         dependsOnRuntime sourceSets.named("typesystem").get()
     }
 }

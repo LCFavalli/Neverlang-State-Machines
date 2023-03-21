@@ -3,8 +3,5 @@ state machine Door {
         on close => Closed;
         on exit => Closed;
     }
-    initial state Closed {
-        on open => Open;
-    }
-    final state Exit {}
+	initial state Closed {}
 }

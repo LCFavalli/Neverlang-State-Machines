@@ -1,6 +1,7 @@
 package lsp;
 
-import neverlang.lsp.launcher.NeverlangLSPSocketLauncher;
+import neverlang.core.lsp.launcher.NeverlangLSPSocketLauncher;
+
 public class SocketLauncher {
 
     public static void main(String[] args) {

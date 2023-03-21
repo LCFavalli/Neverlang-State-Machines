@@ -1,22 +1,17 @@
 package sm;
 
+import neverlang.core.typesystem.CompilationContext;
+import neverlang.core.typesystem.CompilationUnitToken;
 import neverlang.junit.NeverlangExt;
 import neverlang.junit.NeverlangUnit;
 import neverlang.junit.NeverlangUnitParam;
 import neverlang.runtime.ASTNode;
-import neverlang.typesystem.CompilationContext;
-import neverlang.typesystem.CompilationUnitToken;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import sm.typesystem.CompilationHelper;
-import sm.typesystem.StateMachineModule;
 
 import javax.annotation.Nullable;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Flow;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.stream.Stream;
@@ -42,9 +37,7 @@ public class TestStateMachineLang {
     @Test
     void testSMwithEventsSyntax(@NeverlangUnitParam(files = "sm/sm_with_events.sm") ASTNode node) {
         var recordSubscriber = new RecordSubscriber(o -> o instanceof LogRecord logRecord && logRecord.getLevel().equals(Level.SEVERE));
-        var compilationHelper = evalASTNode(node, recordSubscriber);
-        StringWriter writer = new StringWriter();
-        Utils.dotExporter(compilationHelper.getGraph(), writer);
+        evalASTNode(node, recordSubscriber);
     }
 
     @Test

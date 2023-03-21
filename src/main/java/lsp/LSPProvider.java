@@ -1,30 +1,28 @@
 package lsp;
 
-import neverlang.lsp.defaults.*;
-import neverlang.lsp.launcher.NeverlangLSPProvider;
-import neverlang.lsp.services.NeverlangLSPDocumentService;
-import neverlang.lsp.services.NeverlangLSPLanguageServer;
-import neverlang.lsp.services.NeverlangLSPWorkspaceService;
-import sm.typesystem.StateMachineModule;
+import neverlang.core.lsp.defaults.*;
+import neverlang.core.lsp.launcher.NeverlangLSPProvider;
+import neverlang.core.lsp.services.NeverlangLSPDocumentService;
+import neverlang.core.lsp.services.NeverlangLSPLanguageServer;
+import neverlang.core.lsp.services.NeverlangLSPWorkspaceService;
+import sm.StateMachineModule;
 
 import java.util.List;
 
 public class LSPProvider extends NeverlangLSPProvider {
 
-    final static String typesystem = "sm.typesystem";
-
     public LSPProvider() {
         super(List.of(
                 new DefaultDiagnostic(StateMachineModule.LANGUAGE),
-                new DefaultDocumentSymbol(typesystem),
+                new DefaultDocumentSymbol(StateMachineModule.TYPE_PACKAGE),
                 new DefaultGoToDefinition(),
                 new DefaultReferences(),
                 new DefaultFoldingRange(),
-                new DefaultSemanticToken(typesystem)
+                new DefaultSemanticToken(StateMachineModule.TYPE_PACKAGE)
         ));
     }
     @Override
-    public NeverlangLSPLanguageServer newLanguageServer() {
+    public NeverlangLSPLanguageServer<?> newLanguageServer() {
         return new NeverlangLSPLanguageServer<>(
                 capabilityList,
                 new StateMachineCompilerHandler(),

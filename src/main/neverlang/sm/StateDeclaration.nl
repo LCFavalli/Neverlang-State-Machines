@@ -1,10 +1,7 @@
 module sm.StateDeclaration {
 
     imports {
-        neverlang.typesystem.symboltable.EntryKind;
-        neverlang.typesystem.defaults.*;
-        neverlang.typesystem.symbols.*;
-        sm.typesystem.*;
+        sm.typesystem.StateModifier;
     }
 
     reference syntax {

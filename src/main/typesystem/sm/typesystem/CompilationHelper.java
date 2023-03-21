@@ -1,17 +1,20 @@
 package sm.typesystem;
 
-import neverlang.typesystem.Scope;
-import typelang.annotations.TypeLangAnnotation;
-import typelang.annotations.TypeSystemKind;
+
+import neverlang.core.typelang.annotations.TypeLangAnnotation;
+import neverlang.core.typelang.annotations.TypeSystemKind;
+import neverlang.core.typesystem.Scope;
+import neverlang.core.typesystem.defaults.DefaultTypeSourceSet;
+import sm.StateMachineModule;
 
 @TypeLangAnnotation(
-        language = StateMachineModule.LANGUAGE,
+        label = StateMachineModule.LABEL,
         kind = TypeSystemKind.COMPILATION_HELPER
 )
-public class CompilationHelper extends neverlang.typesystem.CompilationHelper<String, Priorities> {
+public class CompilationHelper extends neverlang.core.typesystem.CompilationHelper<String, Priorities> {
     @Override
     protected Scope<String> generateRootType() {
-        return new TypeSourceSet();
+        return new DefaultTypeSourceSet();
     }
 
     @Override

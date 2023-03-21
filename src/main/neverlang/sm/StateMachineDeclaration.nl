@@ -11,7 +11,7 @@ module sm.StateMachineDeclaration {
             enter scope
             eval $1
             define scope machine $1 from #2 to #3 [
-                run $2 priority machine
+                run $2 priority machine then validateFinalState
             ]
             exit scope
         }.

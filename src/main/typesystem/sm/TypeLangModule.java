@@ -2,7 +2,6 @@ package sm;
 
 import neverlang.compiler.plugins.translator.TranslatorPlugin;
 import neverlang.runtime.DexterNeverlangModule;
-import sm.typesystem.TypeLangTranslatorPlugin;
 
 import java.util.Map;
 
